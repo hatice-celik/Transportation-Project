@@ -1,0 +1,35 @@
+﻿@model List<Transportation.Models.TblCategory>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int sayac = 0;
+}
+
+@Html.Partial("Statistic")
+
+<h2>Kategori Listesi</h2>
+
+<table class="table table-striped">
+    <tr>
+        <th>#</th>
+        <th>Kategori Adı</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        <!-- Detaylar</th>-->
+        
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        sayac++;
+        <tr>
+            <td>@sayac</td>
+            <td>@item.CategoryName</td>
+            <td><a href="/Category/DeleteCategory/@item.CategoryID" class="btn btn-danger btn-round">Sil</a></td>
+            <td><a href="/Category/UpdateCategory/@item.CategoryID" class="btn btn-success btn-round">Güncelle</a></td>
+            
+        </tr>
+    }
+</table>
+<a href="/Category/AddCategory/" class="btn btn-primary btn-round">Yeni Kategori Girişi</a>
